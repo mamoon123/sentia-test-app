@@ -1,0 +1,33 @@
+<div class="new-user-btn">
+  <%= link_to 'Add New User Record', new_user_path, class: 'btn btn-default btn-primary' %>
+</div>
+<br/>
+<hr/>
+<% if @users.present? %>
+  <div class="container">        
+    <table class="table table-hover"  id="user-data">
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>Date</th>
+          <th>Number</th>
+          <th>Description</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% @users.all.each do |user| %>
+          <tr>
+            <td><%= user.name %></td>
+            <td><%= user.try(:date).try(:to_date) %></td>
+            <td><%= user.number %></td>
+            <td><%= user.description %></td>
+          </tr>  
+        <% end %>  
+      </tbody>
+    </table>
+  </div>
+<% else %>
+<center> <i> No Record is present </i> </center>
+
+<% end %>
+
